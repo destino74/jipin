@@ -1,0 +1,10 @@
+[Unit]
+Description=uWSGI instance to serve jipin
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/root/jipin
+Environment="PATH=/root/jipin/env/bin"
+ExecStart=/root/jipin/env/bin/uwsgi --ini /root/jipin/conf/jipin.ini

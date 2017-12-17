@@ -1,0 +1,116 @@
+body {
+    background: #f0f0f0;
+    font-size:14px;
+    line-height: 22px;
+}
+
+.img {
+    border: 1px solid #e6e6e6;
+    margin-bottom: 15px;
+}
+
+.card{
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6;
+    height: auto;
+    min-height: 300px;
+
+}
+
+
+.job-box{
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.job-box .job-content{
+    text-align: left;
+    display: none;
+}
+
+.job-box p{
+    margin: 1em 0;
+}
+
+.job-box .salary{
+    color: #ff7f00;
+    font-size: 18px;
+}
+
+.company{
+    border-top:1px solid #e6e6e6;
+    background-color: #ffffff;
+    position: relative;
+    top: 10px;
+    overflow-y: hidden;
+    text-align: center;
+}
+.company .company-info{
+    padding:5px 8px;
+}
+
+.company .company-info p{
+    margin: 0;
+}
+.company-img{
+    width: 72px;
+    height: 72px;
+    border:1px solid #e6e6e6;
+    margin: 5px 2px;
+}
+
+.company p {
+    line-height: 18px;
+}
+
+#header{
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 200;
+    box-shadow: 0 2px 5px rgba(0,0,0,.2);
+    background-color: #303a40;
+    line-height: 50px;
+}
+
+.header-right {
+    float: right;
+    height: 50px;
+}
+
+.header-search {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+    height: 32px;
+    line-height: 32px;
+    width: 360px;
+}
+
+.header-search #searchInput {
+    padding: 0 34px 0 14px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #e0e4e5;
+    border-radius: 18px;
+    outline: none;
+    background: transparent;
+    color: #e0e4e5;
+}
+
+
+.header-icon {
+    vertical-align: middle;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 12px;
+    top: 7px;
+    cursor: pointer;
+}
+
+
+#job-detail-body {
+    padding: 0 15px;
+}
+

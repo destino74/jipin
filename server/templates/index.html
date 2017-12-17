@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href='{{ url_for("static", filename="css/index.css") }}'>
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <title>集聘网 - 汇集天下名聘</title>
+</head>
+<body>
+
+<div class="home" style="background-image: url('/static/img/home.jpg');">
+    <div class="container" >
+        <div class="row">
+            <form class="home-search" action="/search">
+                <img class="home-logo" src="/static/img/logo.png" alt="">
+                <input class="home-search-input" id="searchInput" autocomplete="off" name="query"
+                       placeholder='keyword="" || title="" || company=""'>
+                <img class="home-search-icon" src="/static/img/white-search.svg" alt="搜索" onclick="submit()">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

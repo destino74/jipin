@@ -1,0 +1,8 @@
+Flask==0.12.2
+gevent==1.2.2
+lxml==4.1.1
+PyMySQL==0.7.11
+redis==2.10.6
+requests==2.18.4
+urllib3==1.22
+uWSGI==2.0.15

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href='{{ url_for("static", filename="css/result.css") }}'>-->
+    <script src="static/js/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/result.css">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <title>集聘网 - 汇集天下名聘</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header">
+                <div class="logo" style="float: left">
+                    <a href="/"><img alt="聚贤Logo" src="/static/img/logo.png" width="110" height="40"><em><i class="icons16 icons16-home-white" title="首页"></i></em></a>
+                </div>
+
+                <ul class="nav navbar-nav" >
+                    <li data-name="home" class="active"><a href="/">首页</a></li>
+                </ul>
+
+                <div class="header-right">
+                    <form class="header-search" action="/search" >
+                        <input type="text" id="searchInput" autocomplete="off" value="{{query}}" name="query">
+                        <!--<input type="image" style="background-image:url('/static/img/white-search.svg')"/>-->
+                        <img class="header-icon" src="/static/img/white-search.svg" alt="搜索" onclick="submit()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" >
+        <div class="row" id="job-list" >
+                {% for ret in result_list %}
+                <div class="col-md-3 col-sm-6 col-xs11 card" title="点击显示职位详情">
+                    <div class="job-box">
+                        <h4><a href="{{ret['url']}}" class="job-title" onclick="cancelBubble(event)" target="_blank">{{ret['title']}}</a> </h4>
+                        <span class="salary">{{ret['salary']}}</span>
+                        <br>
+                        <span >{{ ret['experience'] }}</span> /
+                        <span >{{ ret['education'] }}</span>
+                    <div class="job-content" >
+                        {% set content_list = ret['content'].split('\n') %}
+                        {% for line in content_list %}
+                        <p>{{line}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                    <div class="company">
+                        <div class="media">
+                            <div class="media-heading">
+                                {% if ret['icon'] %}
+                                <img class="company-img"  src="{{ret['icon']}}">
+                                {% else %}
+                                    <img class="company-img"  style="padding: 20px 5px;" src="/static/img/logo.png">
+                                {% endif %}
+                            </div>
+                            <div class="media-body">
+                                <div class="company-info">
+                                    <strong>{{ ret['company'] }}</strong>
+                                    <br>
+                                    {{ ret['address'] }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+        </div>
+
+
+
+
+        <!--底部分页栏 -->
+        <div style="text-align: center">
+            {% import "blocks.html" as blocks %}
+            {{blocks.pager('/search?query='+query|urlencode, p.total, p.limit, p.curr_page)}}
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="job-detail" tabindex="-1" role="dialog" aria-labelledby="job-detail">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            <h4 class="modal-title" id="job-title"></h4>
+          </div>
+          <div id="job-detail-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $(".card").click(function(){
+                var jobContent = $(this).find(".job-content").html();
+                var jobTitle = $(this).find(".job-title").text();
+                $('#job-title').text(jobTitle);
+                $('#job-detail-body').html(jobContent);
+                $('#job-detail').modal();
+            });
+        });
+
+        function cancelBubble(e) {
+            e.cancelBubble = true;
+        }
+    </script>
+</body>
+</html>
