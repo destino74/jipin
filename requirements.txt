@@ -1,6 +1,6 @@
 Flask==0.12.2
 gevent==1.2.2
-lxml==4.1.1
+lxml==4.6.5
 PyMySQL==0.7.11
 redis==2.10.6
 requests==2.18.4
